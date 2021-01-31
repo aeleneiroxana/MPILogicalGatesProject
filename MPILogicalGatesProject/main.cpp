@@ -154,7 +154,7 @@ int main(int argc, char* argv[])
 
                 Gate* testGate = new Gate(0, sendsTo, noGates);
                 testGate->Execute(new int [] { input });
-                testGate->Print();
+                //testGate->Print();
                 gates.push_back(testGate);
             }
             else if (type.compare("gate") == 0)
@@ -174,7 +174,7 @@ int main(int argc, char* argv[])
                 }
 
                 Gate* gate = new Gate(order, sendsTo, noGates, functionType);
-                gate->Print();
+                //gate->Print();
                 gates.push_back(gate);
             }
         }
@@ -189,7 +189,7 @@ int main(int argc, char* argv[])
                 for (int j = 0; j < count; j++) // deci luam toate portile catre care trebuie sa trimitem
                 {
                     MPI_Send(&output, 1, MPI_INT, sendsTo[j], 4, MPI_COMM_WORLD); // si le trimitem valoarea
-                    cout << "Rank " << rank << " has sent " << output << " to process " << sendsTo[j] << endl;
+                    cout << "Process " << rank << " has sent " << output << " to process " << sendsTo[j] << endl;
                 }
             }
             else
